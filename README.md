@@ -1,6 +1,6 @@
 # Routenresilienz: Nadelöhr riskieren oder ausweichen? – Streamlit-Demo
 
-*(noch nicht deployed)*
+**[→ Demo live ausprobieren](https://sebastianhanisch-routenresilienz-demo.streamlit.app/)**
 
 Interaktive Fall-Demo zu **optimalem Stoppen**: eine Reederei entscheidet vor jeder Abfahrt, ob sie ein **Nadelöhr** (Straße von Hormus, Bab-el-Mandeb/Rotes Meer) anfährt – kürzer, aber mit
 **Kriegsrisikozuschlag** und Sperrrisiko – oder die deutlich längere **Ausweichroute** (Kap der Guten Hoffnung) nimmt, motiviert durch die reale Umleitung der Weltcontainerschifffahrt seit den
