@@ -65,12 +65,12 @@ POLICY_COLORS = {POLICY_DETOUR: "#9aa5b4", POLICY_THRESHOLD: "#e0a800", POLICY_D
 # > Schwelle -> "hier lohnt sich Abwarten und die Direktroute deutlich" (niedrige Ausgangslage).
 DETOUR_SAVINGS_LOW_THRESHOLD = 5.0
 POLICY_DESCRIPTIONS = {
-    POLICY_DETOUR: "Waehlt von Anfang an die sichere, laengere Ausweichroute, ohne die Lage zu "
+    POLICY_DETOUR: "Wählt von Anfang an die sichere, längere Ausweichroute, ohne die Lage zu "
                    "beobachten. Die Kontrast-Baseline: zeigt, wie teuer pauschale Vorsicht wird.",
-    POLICY_THRESHOLD: "Wartet bis zum letztmoeglichen Tag ab und entscheidet dann anhand eines festen "
-                      "Schwellwerts ueber die Risikostufe. Die zweite, informierte Baseline: zeigt, wie "
+    POLICY_THRESHOLD: "Wartet bis zum letztmöglichen Tag ab und entscheidet dann anhand eines festen "
+                      "Schwellwerts über die Risikostufe. Die zweite, informierte Baseline: zeigt, wie "
                       "teuer starres statt adaptives Abwarten wird.",
-    POLICY_DP: "Rueckwaertsinduktion ueber (Periode, Risikostufe) - das echte Optimum, entscheidet "
+    POLICY_DP: "Rückwärtsinduktion über (Periode, Risikostufe) - das echte Optimum, entscheidet "
               "adaptiv wann und wie. Die operative Empfehlung der Hauptansicht.",
 }
 COMPARISON_TAB_LABEL = "📊 Vergleich"

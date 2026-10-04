@@ -22,7 +22,7 @@ def render_metrics(columns, result):
     positive Zahl steht prominent."""
     m = columns
     m[0].metric("Kosten (DP)", fmt_cost(result.dp_cost),
-               help="Erwartete Kosten der DP-optimalen Politik (Rueckwaertsinduktion) bei der eingestellten Route.")
+               help="Erwartete Kosten der DP-optimalen Politik (Rückwärtsinduktion) bei der eingestellten Route.")
     m[1].metric("Kosten (immer Ausweichroute)", fmt_cost(result.detour_cost),
                delta=fmt_cost(result.detour_cost - result.dp_cost), delta_color="inverse",
                help="Kontrast-Baseline: von Anfang an die sichere Route, ohne die Lage zu beobachten. Delta = Ausweichroute minus DP.")
@@ -30,14 +30,14 @@ def render_metrics(columns, result):
                delta=fmt_cost(result.threshold_cost - result.dp_cost), delta_color="inverse",
                help="Zweite, informierte Baseline: bis zuletzt abwarten, dann anhand eines festen Schwellwerts entscheiden. Delta = Schwellwert minus DP.")
     m[3].metric("Ersparnis ggü. Schwellwert", fmt_pct(result.savings_vs_threshold_pct),
-               help="Der robuste, durchgehend positive Befund: DP gegen die Schwellwert-Baseline. Waechst mit den Wartekosten.")
+               help="Der robuste, durchgehend positive Befund: DP gegen die Schwellwert-Baseline. Wächst mit den Wartekosten.")
 
 
 def render_timeline(key, shown, n_risk_levels):
     fig = V.risk_path_figure(shown, n_risk_levels)
     st.plotly_chart(fig, width="stretch", key=key)
     st.caption("Kreis = Entscheidungspunkt der DP-Politik, Raute (gestrichelt umrandet) = Entscheidungspunkt der "
-              "Schwellwert-Politik (immer am letztmoeglichen Tag). Farbe = gewaehlte Route.")
+              "Schwellwert-Politik (immer am letztmöglichen Tag). Farbe = gewählte Route.")
 
 
 def render_policy_panel(prefix, policy_key, result, shown, params):
@@ -51,12 +51,12 @@ def render_policy_panel(prefix, policy_key, result, shown, params):
     if policy_key == C.POLICY_THRESHOLD:
         st.caption(f"Bester fester Schwellwert dieser Einstellung: Risikostufe <= "
                   f"„{C.RISK_LABELS[result.best_k_star]}“ -> Direktroute, sonst Ausweichroute - "
-                  f"entschieden wird aber immer erst in Periode {params.n_periods} (letztmoeglicher Tag).")
+                  f"entschieden wird aber immer erst in Periode {params.n_periods} (letztmöglicher Tag).")
     if policy_key == C.POLICY_DP:
         bd = E.dp_breakdown(result, params)
         st.caption(f"Im Erwartungswert {bd.expected_wait_periods:.2f} von {params.n_periods} Perioden "
                   f"abgewartet - Wartekosten-Anteil {fmt_cost(bd.wait_cost)}, Kosten der letztlich "
-                  f"gewaehlten Route {fmt_cost(bd.route_cost)}.")
+                  f"gewählten Route {fmt_cost(bd.route_cost)}.")
     render_timeline(f"{prefix}_path_chart", shown, params.n_risk_levels)
 
 
@@ -88,5 +88,5 @@ def render_comparison_tab(result, shown, params):
     st.plotly_chart(V.cost_comparison_figure(result, show_hindsight=True), width="stretch",
                     key="comparison_tab_cost_chart")
     st.caption("Hindsight ist keine online umsetzbare Politik (kennt Risikopfad und Sperr-Realisierung im "
-              "Voraus) - sie zeigt nur, wie viel zusaetzliches Wissen ueber die Zukunft noch bringen wuerde "
-              "(\"Wert von Information\"), hier deutlich groesser als bei der Buchungs-/Slot-Vergabe-Demo.")
+              "Voraus) - sie zeigt nur, wie viel zusätzliches Wissen über die Zukunft noch bringen würde "
+              "(\"Wert von Information\"), hier deutlich größer als bei der Buchungs-/Slot-Vergabe-Demo.")

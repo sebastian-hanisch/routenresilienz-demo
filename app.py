@@ -54,7 +54,7 @@ PRESET_HELP = {
     "Hormus-artige Dauerspannung": "Akute Dauerkrise: Ausweichen ist schon fast optimal, der Gewinn der DP liegt allein im WANN.",
     "Teure Ausweichroute": "Wenn Ausweichen selbst richtig teuer wird, lohnt sich die genaue Abwägung besonders.",
     "Hohe Wartekosten": "Der robusteste Hook dieser Demo: starres Abwarten wird teuer, wenn Liegezeit selbst viel kostet.",
-    "Volatile Lage": "Die Lage schlägt schnell in beide Richtungen um – zeigt den größten Wert von Information.",
+    "Volatile Lage": "Die Lage schlägt schnell in beide Richtungen um – zeigt einen hohen Wert von Information.",
 }
 preset_names = list(C.PRESETS.keys())
 for row in (preset_names[:3], preset_names[3:]):
@@ -115,7 +115,7 @@ st.markdown("#### 🧭 Realisierter Risikopfad mit Entscheidungspunkt")
 render_timeline("main_path_chart", shown, params.n_risk_levels)
 
 st.info(f"🔮 Hindsight (volles Vorwissen über Risikopfad und Sperr-Realisierung) läge bei "
-       f"{fmt_cost(result.hindsight_cost)} – **{fmt_pct(result.gap_to_hindsight_pct)}** unter dem DP-Optimum: so "
+       f"{fmt_cost(result.hindsight_cost)} – das DP-Optimum ist **{fmt_pct(result.gap_to_hindsight_pct)}** teurer: so "
        f"groß ist hier der Wert von Information (deutlich größer als bei der Buchungs-/Slot-Vergabe-Demo).")
 
 pdf_slot = st.container()
@@ -226,6 +226,6 @@ st.markdown("---")
 
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zum Thema: [Seefracht optimieren](https://sebastianhanisch.net/seefracht-optimierung.html)."
 )

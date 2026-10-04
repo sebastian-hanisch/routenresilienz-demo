@@ -48,7 +48,7 @@ Alle Zahlen mit `python -m pytest tests/` nachvollziehbar (`test_preset_stories.
 | Frage | Befund | Test |
 |---|---|---|
 | Ist die DP besser als „immer Ausweichen"? | Regimeabhängig: ruhige Lage +20,5 %, teure Ausweichroute +23,6 %, Hormus-artige Dauerspannung nur +0,0 % – bei akutem Risiko ist Ausweichen schon fast optimal, kein Fehler des Modells | `test_preset_stories.py` |
-| Ist die DP besser als „Abwarten + fester Schwellwert"? | Ja, robust und wachsend mit den Wartekosten: vernachlässigbare Wartekosten +10,0 % bis +11,6 %, hohe Wartekosten **+34,0 %** – der robusteste Hook dieser Demo | `test_preset_stories.py` |
+| Ist die DP besser als „Abwarten + fester Schwellwert"? | Ja, robust und wachsend mit den Wartekosten: vernachlässigbare Wartekosten +10,0 % bis +12,7 %, hohe Wartekosten **+34,0 %** – der robusteste Hook dieser Demo | `test_preset_stories.py` |
 | Kommt der Vorsprung aus weniger Warten oder einer anderen Route? | Aus weniger unnötigem Warten: die DP wartet im Mittel klar weniger Perioden als der feste Schwellwert bei jedem Preset | `test_evaluation.py::test_dp_waits_no_more_than_the_threshold_baseline_on_average` |
 | Wird bei kostenlosem Abwarten immer gewartet? | Nein – an der sichersten Risikostufe droht nur eine Verschlechterung, keine Verbesserung; die DP wählt dort auch bei `c_wait=0` nicht immer „warten" | `test_solve.py::test_zero_wait_cost_does_not_crash_and_stays_optimal` |
 | Stimmt Vorwärts- mit Rückwärtsrechnung überein? | Ja, exakt (30 Zufallsinstanzen) – zwei unabhängige Rechenwege für dieselbe Zahl | `test_solve.py::test_forward_matches_backward` |
@@ -132,3 +132,5 @@ Tests: `python -m pytest tests/ -v`. Preset-Abstimmung: `python tools/tune_prese
 ---
 
 Gebaut mit Streamlit, Plotly und fpdf2.
+
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zum Thema: [Seefracht optimieren](https://sebastianhanisch.net/seefracht-optimierung.html).

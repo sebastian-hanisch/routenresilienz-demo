@@ -76,7 +76,7 @@ def generate_rrs_pdf(k0_label, volatilitaet, c_wait_pct, c_detour_pct, n_periods
         pdf.set_text_color(0, 0, 0)
 
     pdf.set_font("Helvetica", "B", 16)
-    line("Routenresilienz: Nadeloehr riskieren oder ausweichen?", 10)
+    line("Routenresilienz: Nadelöhr riskieren oder ausweichen?", 10)
     pdf.set_font("Helvetica", "", 9)
     pdf.set_text_color(120, 120, 120)
     line(f"Erstellt: {time.strftime('%d.%m.%Y %H:%M')}  -  sebastianhanisch.net", 6)
@@ -85,7 +85,7 @@ def generate_rrs_pdf(k0_label, volatilitaet, c_wait_pct, c_detour_pct, n_periods
 
     heading("Einstellungen")
     pairs([
-        ("Ausgangsrisikostufe", k0_label), ("Volatilitaet der Lage", volatilitaet),
+        ("Ausgangsrisikostufe", k0_label), ("Volatilität der Lage", volatilitaet),
         ("Wartekosten je Tag", f"{c_wait_pct} %"), ("Kosten der Ausweichroute", f"+{c_detour_pct} %"),
         ("Tage bis zur Weggabelung", str(n_periods)), ("Seed", str(seed)),
     ])
@@ -97,8 +97,8 @@ def generate_rrs_pdf(k0_label, volatilitaet, c_wait_pct, c_detour_pct, n_periods
         ("Kosten (immer Ausweichroute)", _cost(result.detour_cost)),
         ("Kosten (Abwarten + fester Schwellwert)", _cost(result.threshold_cost)),
         ("Kosten (Hindsight, Referenz)", _cost(result.hindsight_cost)),
-        ("Ersparnis DP ggue. immer Ausweichroute", _pct(result.savings_vs_detour_pct)),
-        ("Ersparnis DP ggue. Schwellwert", _pct(result.savings_vs_threshold_pct)),
+        ("Ersparnis DP ggü. immer Ausweichroute", _pct(result.savings_vs_detour_pct)),
+        ("Ersparnis DP ggü. Schwellwert", _pct(result.savings_vs_threshold_pct)),
     ])
     pdf.ln(3)
 
@@ -113,13 +113,13 @@ def generate_rrs_pdf(k0_label, volatilitaet, c_wait_pct, c_detour_pct, n_periods
          _pct(E.savings_vs_dp_pct(result.threshold_cost, result.dp_cost)), f"{bd_th.expected_wait_periods:.2f}"],
         [C.POLICY_SHORT[C.POLICY_DP], _cost(result.dp_cost), _pct(0.0), f"{bd_dp.expected_wait_periods:.2f}"],
     ]
-    table(["Politik", "Kosten", "Ersparnis ggue. DP", "Perioden abgewartet"], [50, 35, 40, 40], rows)
+    table(["Politik", "Kosten", "Ersparnis ggü. DP", "Perioden abgewartet"], [50, 35, 40, 40], rows)
     pdf.ln(3)
 
     keep_together(40)
-    heading("Kostenaufschluesselung DP (Wartekosten- gegen Routenkosten-Anteil)")
+    heading("Kostenaufschlüsselung DP (Wartekosten- gegen Routenkosten-Anteil)")
     pairs([
-        ("Wartekosten-Anteil", _cost(bd_dp.wait_cost)), ("Kosten der gewaehlten Route", _cost(bd_dp.route_cost)),
+        ("Wartekosten-Anteil", _cost(bd_dp.wait_cost)), ("Kosten der gewählten Route", _cost(bd_dp.route_cost)),
         ("Perioden im Mittel abgewartet", f"{bd_dp.expected_wait_periods:.2f} von {n_periods}"),
     ])
     pdf.ln(3)
@@ -137,15 +137,15 @@ def generate_rrs_pdf(k0_label, volatilitaet, c_wait_pct, c_detour_pct, n_periods
     heading("Hinweise zum Modell")
     pdf.set_font("Helvetica", "", 9)
     for text in [
-        "Nadeloehr (Strasse von Hormus, Bab-el-Mandeb/Rotes Meer) gegen Ausweichroute (Kap der Guten Hoffnung): "
-        "optimales Stoppen, exakt geloest per Rueckwaertsinduktion (Bellman-Gleichung) ueber (Periode, Risikostufe).",
+        "Nadelöhr (Straße von Hormus, Bab-el-Mandeb/Rotes Meer) gegen Ausweichroute (Kap der Guten Hoffnung): "
+        "optimales Stoppen, exakt gelöst per Rückwärtsinduktion (Bellman-Gleichung) über (Periode, Risikostufe).",
         "Die Risikostufe ist eine stark stilisierte Ein-Parameter-Zusammenfassung, nicht an echten Ereignisdaten "
         "kalibriert. Sperrwahrscheinlichkeit und Kriegsrisikozuschlag sind linear in der Risikostufe angenommen, "
-        "real duerften beide eher konvex mit der Eskalation steigen.",
-        "Die Sperr-Realisierung wird je Periode unabhaengig gezogen, nicht als persistenter Zustand. Kein "
+        "real dürften beide eher konvex mit der Eskalation steigen.",
+        "Die Sperr-Realisierung wird je Periode unabhängig gezogen, nicht als persistenter Zustand. Kein "
         "Flottenblick - eine einzelne Abfahrt, keine Konvoi-/Portfolio-Entscheidung.",
-        "Alle Kennzahlen sind exakt ueber die Zustandsverteilung berechnet (keine Simulation, kein "
-        "Standardfehler noetig) - anders als bei den simulationsbasierten Wellen der Seefracht-Linie.",
+        "Alle Kennzahlen sind exakt über die Zustandsverteilung berechnet (keine Simulation, kein "
+        "Standardfehler nötig) - anders als bei den simulationsbasierten Wellen der Seefracht-Linie.",
     ]:
         pdf.multi_cell(0, 5, pdf_text("- " + text), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
