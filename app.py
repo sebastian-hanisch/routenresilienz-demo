@@ -3,7 +3,7 @@ Routenresilienz bei Nadeloehr-Sperrung - interaktive Fall-Demo
 Sebastian Hanisch - Operations Research und Machine Learning
 
 Zusatz zur Geschwindigkeitsoptimierung (Seefracht-Linie): eine Reederei entscheidet vor jeder Abfahrt,
-ob sie ein Nadeloehr (Strasse von Hormus, Bab-el-Mandeb/Rotes Meer) anfaehrt - kuerzer, aber mit
+ob sie ein Nadeloehr (Bab-el-Mandeb/Rotes Meer; als Spannungsbild auch die Strasse von Hormus) anfaehrt - kuerzer, aber mit
 Kriegsrisikozuschlag und Sperrrisiko - oder die deutlich laengere Ausweichroute (Kap der Guten
 Hoffnung) nimmt, oder eine weitere Periode auf mehr Information wartet. Klassisches optimales
 Stoppen, exakt geloest per Rueckwaertsinduktion (Bellman-Gleichung) ueber (Periode, Risikostufe).
@@ -41,8 +41,8 @@ def _shown(k0_label, volatilitaet, c_wait_pct, c_detour_pct, n_periods, seed):
 st.title("🧭 Routenresilienz: Nadelöhr riskieren oder ausweichen?")
 st.markdown(
     """
-Eine Reederei entscheidet vor jeder Abfahrt, ob sie ein **Nadelöhr** (Straße von Hormus, Bab-el-Mandeb/Rotes Meer) anfährt – kürzer, aber mit **Kriegsrisikozuschlag** und Sperrrisiko – oder die deutlich
-längere **Ausweichroute** (Kap der Guten Hoffnung) nimmt, motiviert durch die reale Umleitung der Weltcontainerschifffahrt seit den Houthi-Angriffen im Roten Meer 2024 (die Risikostufe hier ist
+Eine Reederei entscheidet vor jeder Abfahrt, ob sie ein **Nadelöhr** (Bab-el-Mandeb/Rotes Meer; als Spannungsbild auch die Straße von Hormus, die für Golfhäfen allerdings keine Kap-Alternative hat) anfährt – kürzer, aber mit **Kriegsrisikozuschlag** und Sperrrisiko – oder die deutlich
+längere **Ausweichroute** (Kap der Guten Hoffnung) nimmt, motiviert durch die reale Umleitung der Weltcontainerschifffahrt seit den Angriffen der Houthi-Miliz auf Handelsschiffe im Roten Meer (ab November 2023; große Reedereien leiten seit Dezember 2023/Januar 2024 ums Kap um; die Risikostufe hier ist
 illustrativ, nicht an echten Ereignissen kalibriert). Ein **Zusatz zur Geschwindigkeitsoptimierung** (Seefracht-Linie): hebt deren Annahme auf, dass die Route von vornherein feststeht. Wie das Modell
 funktioniert, steht im Expander „Wie funktioniert diese Demo?" weiter unten, die formale Beschreibung im Expander „📐 Mathematische Formulierung".
 """

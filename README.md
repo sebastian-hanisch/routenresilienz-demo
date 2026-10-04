@@ -2,9 +2,9 @@
 
 **[→ Demo live ausprobieren](https://sebastianhanisch-routenresilienz-demo.streamlit.app/)**
 
-Interaktive Fall-Demo zu **optimalem Stoppen**: eine Reederei entscheidet vor jeder Abfahrt, ob sie ein **Nadelöhr** (Straße von Hormus, Bab-el-Mandeb/Rotes Meer) anfährt – kürzer, aber mit
+Interaktive Fall-Demo zu **optimalem Stoppen**: eine Reederei entscheidet vor jeder Abfahrt, ob sie ein **Nadelöhr** (Bab-el-Mandeb/Rotes Meer; als Spannungsbild auch die Straße von Hormus, die für Golfhäfen allerdings keine Kap-Alternative hat) anfährt – kürzer, aber mit
 **Kriegsrisikozuschlag** und Sperrrisiko – oder die deutlich längere **Ausweichroute** (Kap der Guten Hoffnung) nimmt, motiviert durch die reale Umleitung der Weltcontainerschifffahrt seit den
-Houthi-Angriffen im Roten Meer 2024. Die Demo beantwortet: **Wann lohnt es sich, auf mehr Information über die Sperrlage zu warten, und wie teuer ist es, diese Frage mit einer festen Faustregel statt
+Angriffen der Houthi-Miliz auf Handelsschiffe im Roten Meer (ab November 2023; große Reedereien leiten seit Dezember 2023/Januar 2024 ums Kap um). Die Demo beantwortet: **Wann lohnt es sich, auf mehr Information über die Sperrlage zu warten, und wie teuer ist es, diese Frage mit einer festen Faustregel statt
 adaptiv zu beantworten?**
 
 Teil des Portfolios für die Website „Sebastian Hanisch – Operations Research und Machine Learning", **Zusatz zur Geschwindigkeitsoptimierung** (`slow-steaming-demo`, Seefracht-Linie): eine „baut

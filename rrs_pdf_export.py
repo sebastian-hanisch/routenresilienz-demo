@@ -137,7 +137,7 @@ def generate_rrs_pdf(k0_label, volatilitaet, c_wait_pct, c_detour_pct, n_periods
     heading("Hinweise zum Modell")
     pdf.set_font("Helvetica", "", 9)
     for text in [
-        "Nadelöhr (Straße von Hormus, Bab-el-Mandeb/Rotes Meer) gegen Ausweichroute (Kap der Guten Hoffnung): "
+        "Nadelöhr (Bab-el-Mandeb/Rotes Meer; als Spannungsbild auch die Straße von Hormus) gegen Ausweichroute (Kap der Guten Hoffnung): "
         "optimales Stoppen, exakt gelöst per Rückwärtsinduktion (Bellman-Gleichung) über (Periode, Risikostufe).",
         "Die Risikostufe ist eine stark stilisierte Ein-Parameter-Zusammenfassung, nicht an echten Ereignisdaten "
         "kalibriert. Sperrwahrscheinlichkeit und Kriegsrisikozuschlag sind linear in der Risikostufe angenommen, "
