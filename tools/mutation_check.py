@@ -30,8 +30,8 @@ MUTANTS = [
     ("rrs_solve.py", 'return "direct" if k <= k_star else "detour"', 'return "direct" if k < k_star else "detour"'),
     ("rrs_solve.py", "best_if_open = min(best, cost_open)", "best_if_open = max(best, cost_open)"),
     ("rrs_solve.py", "best_if_closed = min(best, cost_closed)", "best_if_closed = max(best, cost_closed)"),
-    ("rrs_solve.py", 'if n == N:\n                    raise ValueError("Politik muss spaetestens in Periode N entscheiden")',
-     'if n > N:\n                    raise ValueError("Politik muss spaetestens in Periode N entscheiden")'),
+    ("rrs_solve.py", 'if n == N:\n                    raise ValueError("Politik muss spätestens in Periode N entscheiden")',
+     'if n > N:\n                    raise ValueError("Politik muss spätestens in Periode N entscheiden")'),
     # rrs_evaluation.py: Ersparnis-Formeln, Kostenaufschluesselung
     ("rrs_evaluation.py", "savings_vs_detour = (detour_cost - dp_cost) / detour_cost * 100 if detour_cost else 0.0",
      "savings_vs_detour = (dp_cost - detour_cost) / detour_cost * 100 if detour_cost else 0.0"),

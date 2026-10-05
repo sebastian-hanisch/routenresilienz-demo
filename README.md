@@ -7,15 +7,15 @@ Interaktive Fall-Demo zu **optimalem Stoppen**: eine Reederei entscheidet vor je
 Angriffen der Houthi-Miliz auf Handelsschiffe im Roten Meer (ab November 2023; große Reedereien leiten seit Dezember 2023/Januar 2024 ums Kap um). Die Demo beantwortet: **Wann lohnt es sich, auf mehr Information über die Sperrlage zu warten, und wie teuer ist es, diese Frage mit einer festen Faustregel statt
 adaptiv zu beantworten?**
 
-Teil des Portfolios für die Website „Sebastian Hanisch – Operations Research und Machine Learning", **Zusatz zur Geschwindigkeitsoptimierung** (`slow-steaming-demo`, Seefracht-Linie): eine „baut
-aus"-Kante wie „Robuste Kaiplatzplanung" in der Hafen-Linie – hebt deren stillschweigende Annahme auf, dass die Route von vornherein feststeht. Anders als die simulationsbasierten Wellen der
+Teil des Portfolios für die Website „Sebastian Hanisch – Operations Research und Machine Learning“, **Zusatz zur Geschwindigkeitsoptimierung** (`slow-steaming-demo`, Seefracht-Linie): eine „baut
+aus"-Kante wie „Robuste Kaiplatzplanung“ in der Hafen-Linie – hebt deren stillschweigende Annahme auf, dass die Route von vornherein feststeht. Anders als die simulationsbasierten Wellen der
 Seefracht-Linie sind hier **alle Kennzahlen exakt** (Zustandsverteilungen statt Stichprobe) – keine Stichprobenschwankung, kein Standardfehler nötig.
 
 ## Warum dieses Problem
 
 Klassisches **optimales Stoppen**, exakt lösbar per Rückwärtsinduktion (Bellman-Gleichung) über den kleinen Zustandsraum (Periode, Risikostufe). Der Befund ist differenzierter als bei den bisherigen
-Wellen: gegen „immer Ausweichroute" ist der Vorsprung der DP-Politik **regimeabhängig** – bei bereits hoher Ausgangsrisikostufe fast 0 % (Ausweichen ist dort schon fast optimal), bei ruhiger Lage
-dagegen deutlich zweistellig. Der robuste, durchgehend starke Hebel liegt gegen „abwarten und dann nach Gefühl entscheiden" (fester Schwellwert am letztmöglichen Tag): dort wächst der Vorsprung mit
+Wellen: gegen „immer Ausweichroute“ ist der Vorsprung der DP-Politik **regimeabhängig** – bei bereits hoher Ausgangsrisikostufe fast 0 % (Ausweichen ist dort schon fast optimal), bei ruhiger Lage
+dagegen deutlich zweistellig. Der robuste, durchgehend starke Hebel liegt gegen „abwarten und dann nach Gefühl entscheiden“ (fester Schwellwert am letztmöglichen Tag): dort wächst der Vorsprung mit
 den Wartekosten, weil die naive Regel immer die vollen Wartekosten zahlt, während die DP adaptiv früh abbricht.
 
 ## Modell
@@ -23,7 +23,7 @@ den Wartekosten, weil die naive Regel immer die vollen Wartekosten zahlt, währe
 Diskrete Markov-Kette über 5 Risikostufen (sehr gering … sehr hoch, Random Walk mit reflektierenden Rändern, kalibrierbare Eskalations-/Deeskalationswahrscheinlichkeit). In jeder von N Perioden bis
 zum letztmöglichen Entscheidungszeitpunkt: **Direktroute** (Erwartungswert aus laufzeitabhängigem Kriegsrisikozuschlag plus Sperrwahrscheinlichkeit, beide linear steigend in der Risikostufe; bei
 Sperrung zusätzliche Umleitungs-Strafkosten), **Ausweichroute** (fix, sicher, unabhängig von Risikostufe und Zeitpunkt), oder **eine weitere Periode abwarten** (kleine Kosten je Periode, verlorene
-Charterzeit). Am letzten Zeitpunkt muss entschieden werden. Formal im Expander „📐 Mathematische Formulierung" der App.
+Charterzeit). Am letzten Zeitpunkt muss entschieden werden. Formal im Expander „📐 Mathematische Formulierung“ der App.
 
 ## Methodik – drei Bausteine statt einer Reglerfamilie
 
@@ -47,10 +47,10 @@ Alle Zahlen mit `python -m pytest tests/` nachvollziehbar (`test_preset_stories.
 
 | Frage | Befund | Test |
 |---|---|---|
-| Ist die DP besser als „immer Ausweichen"? | Regimeabhängig: ruhige Lage +20,5 %, teure Ausweichroute +23,6 %, Hormus-artige Dauerspannung nur +0,0 % – bei akutem Risiko ist Ausweichen schon fast optimal, kein Fehler des Modells | `test_preset_stories.py` |
-| Ist die DP besser als „Abwarten + fester Schwellwert"? | Ja, robust und wachsend mit den Wartekosten: vernachlässigbare Wartekosten +10,0 % bis +12,7 %, hohe Wartekosten **+34,0 %** – der robusteste Hook dieser Demo | `test_preset_stories.py` |
+| Ist die DP besser als „immer Ausweichen“? | Regimeabhängig: ruhige Lage +20,5 %, teure Ausweichroute +23,6 %, Hormus-artige Dauerspannung nur +0,0 % – bei akutem Risiko ist Ausweichen schon fast optimal, kein Fehler des Modells | `test_preset_stories.py` |
+| Ist die DP besser als „Abwarten + fester Schwellwert“? | Ja, robust und wachsend mit den Wartekosten: vernachlässigbare Wartekosten +10,0 % bis +12,7 %, hohe Wartekosten **+34,0 %** – der robusteste Hook dieser Demo | `test_preset_stories.py` |
 | Kommt der Vorsprung aus weniger Warten oder einer anderen Route? | Aus weniger unnötigem Warten: die DP wartet im Mittel klar weniger Perioden als der feste Schwellwert bei jedem Preset | `test_evaluation.py::test_dp_waits_no_more_than_the_threshold_baseline_on_average` |
-| Wird bei kostenlosem Abwarten immer gewartet? | Nein – an der sichersten Risikostufe droht nur eine Verschlechterung, keine Verbesserung; die DP wählt dort auch bei `c_wait=0` nicht immer „warten" | `test_solve.py::test_zero_wait_cost_does_not_crash_and_stays_optimal` |
+| Wird bei kostenlosem Abwarten immer gewartet? | Nein – an der sichersten Risikostufe droht nur eine Verschlechterung, keine Verbesserung; die DP wählt dort auch bei `c_wait=0` nicht immer „warten“ | `test_solve.py::test_zero_wait_cost_does_not_crash_and_stays_optimal` |
 | Stimmt Vorwärts- mit Rückwärtsrechnung überein? | Ja, exakt (30 Zufallsinstanzen) – zwei unabhängige Rechenwege für dieselbe Zahl | `test_solve.py::test_forward_matches_backward` |
 | Schlägt eine erschöpfende Politiksuche auf Mini-Instanzen die DP? | Nein, 0 Verletzungen über 8 Instanzen (bis zu 3^6 durchprobierte Politiken) | `test_solve.py::test_exhaustive_tiny_instances` |
 | Dominiert Hindsight immer das DP-Optimum? | Ja, harte Invariante: 0 Verletzungen über 30 Zufallsinstanzen | `test_solve.py::test_hindsight_never_worse_than_dp` |
@@ -61,7 +61,7 @@ Alle Zahlen mit `python -m pytest tests/` nachvollziehbar (`test_preset_stories.
 
 - **Risikostufe stark stilisiert** – eine Ein-Parameter-Zusammenfassung einer politisch/militärisch komplexen Lage, nicht an echten Ereignisdaten (z. B. Lloyd's-Kriegsrisiko-Notierungen) kalibriert.
 - **Linear statt konvex** – Sperrwahrscheinlichkeit und Kriegsrisikozuschlag sind linear in der Risikostufe angenommen, real dürften beide eher konvex mit der Eskalation steigen.
-- **Sperrung je Periode unabhängig**, nicht als persistenter Zustand („gesperrt bleibt gesperrt" würde einen zusätzlichen Absorptionszustand brauchen).
+- **Sperrung je Periode unabhängig**, nicht als persistenter Zustand („gesperrt bleibt gesperrt“ würde einen zusätzlichen Absorptionszustand brauchen).
 - **Kein Flottenblick** – eine einzelne Abfahrt, keine Konvoi-/Portfolio-Entscheidung über mehrere Schiffe.
 - **Fachmodell-Konstanten fest** – `n_risk_levels`, Sperrwahrscheinlichkeit/Prämie bei höchster Stufe, Basiskosten und Sperr-Strafkosten sind in `rrs_constants.py` fixiert, nicht über Regler
   einstellbar (nur Ausgangsrisikostufe, Volatilität, Wartekosten, Ausweichkosten und Perioden sind es, siehe Detailplan Abschnitt 5).
@@ -81,7 +81,7 @@ Alle Zahlen mit `python -m pytest tests/` nachvollziehbar (`test_preset_stories.
 - **Presets** (`test_stories.py`, `test_preset_stories.py`): jedes Kriterium an künstlichen Werten, die genau an seiner Schwelle kippen; echte Presets erfüllen ihre Kriterien (exakt, keine Toleranz
   nötig).
 - **Figuren** (`test_visualization.py`): Risikopfad, Politik-Schwellwertband, Kostenvergleich – alle Achsen fest (`fixedrange`).
-- **PDF** (`test_pdf_export.py`): Sonderzeichen-Bereinigung (fpdf2 stürzt bei „–", „€", Unicode-Minus, Emoji ab – mit den genauen Zeichen getestet), Randfälle (Wartekosten 0, jedes Preset, kleinste
+- **PDF** (`test_pdf_export.py`): Sonderzeichen-Bereinigung (fpdf2 stürzt bei „–“, „€“, Unicode-Minus, Emoji ab – mit den genauen Zeichen getestet), Randfälle (Wartekosten 0, jedes Preset, kleinste
   Periodenzahl, höchste Ausgangsrisikostufe).
 - **End-to-End** (`test_app.py`, AppTest): Skelett und Footer, jedes Preset, Permalink, alle Regler an Min und Max, die bedingte Meldung in beiden Zuständen, Vergleichstabelle, PDF, Texte.
 

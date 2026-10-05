@@ -224,7 +224,7 @@ def test_hindsight_oracle_never_exceeds_immediate_detour_cost():
 
 def test_expected_cost_under_policy_rejects_wait_in_final_period():
     params = Params(n_periods=3)
-    with pytest.raises(ValueError, match="spaetestens in Periode N"):
+    with pytest.raises(ValueError, match="spätestens in Periode N"):
         expected_cost_under_policy(lambda n, k: "wait", params)
 
 

@@ -33,7 +33,7 @@ class Params:
         if self.n_periods < 1:
             raise ValueError("n_periods muss >= 1 sein")
         if not (0 <= self.k0 < self.n_risk_levels):
-            raise ValueError("k0 ausserhalb 0..n_risk_levels-1")
+            raise ValueError("k0 außerhalb 0..n_risk_levels-1")
         if self.escalate_prob + self.deescalate_prob > 1.0 + 1e-9:
             raise ValueError("escalate_prob + deescalate_prob > 1")
 

@@ -52,7 +52,7 @@ def expected_cost_under_policy(policy_fn, p: Params) -> float:
                 total += prob * expected_direct_cost(k, p)
             elif action == "wait":
                 if n == N:
-                    raise ValueError("Politik muss spaetestens in Periode N entscheiden")
+                    raise ValueError("Politik muss spätestens in Periode N entscheiden")
                 total += prob * p.c_wait
                 for kp in range(K):
                     tp = T[k][kp]
