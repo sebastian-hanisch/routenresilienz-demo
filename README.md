@@ -68,7 +68,7 @@ Alle Zahlen mit `python -m pytest tests/` nachvollziehbar (`test_preset_stories.
 
 ## Tests
 
-`python -m pytest tests/ -v` – 133 Tests, rund 13 Sekunden. Zusammensetzung:
+`python -m pytest tests/ -v` – 158 Tests, rund 13 Sekunden. Zusammensetzung:
 
 - **Fachmodell** (`test_scenario.py`): Params-Validierung, Übergangsmatrix-Struktur (stochastisch, reflektierende Ränder), Kostenfunktionen monoton in der Risikostufe, Pfad-Realisierung
   (Determinismus, Struktur, Randbeachtung).
