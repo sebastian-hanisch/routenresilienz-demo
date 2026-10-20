@@ -48,6 +48,17 @@ funktioniert, steht im Expander „Wie funktioniert diese Demo?“ weiter unten,
 """
 )
 
+# erklaerseite:einfach:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/routenresilienz-erklaert.json, nicht von Hand ändern)
+with st.expander("💬 In einfachen Worten"):
+    st.markdown(
+        """
+Eine Reederei muss vor jeder Abfahrt entscheiden: die kurze Route durch ein Nadelöhr, also eine enge, leicht zu sperrende Meerespassage, mit einem Zuschlag wegen Kriegsrisiko und der Gefahr einer Sperrung, oder die deutlich längere, aber sichere Ausweichroute ums Kap. Sie kann auch einen Tag abwarten und hoffen, dass sich die Lage klärt, doch Abwarten kostet Charterzeit. Die Demo zeigt, wie die **optimale Regel** aussieht: Direktroute bei ruhiger Lage, abwarten in einem mittleren Bereich, ausweichen bei kritischer Lage. Sie vergleicht diese Regel mit starren Alternativen. Es ist ein stark vereinfachtes Modell, und die Risikostufe ist nicht an echten Ereignissen kalibriert.
+
+[Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/routenresilienz-erklaert.html)
+        """
+    )
+# erklaerseite:einfach:end
+
 st.caption("🎯 Schnellstart – ein Beispielszenario laden:")
 PRESET_HELP = {
     "Ruhige Lage": "Der entspannte Grundfall: Abwarten und die Direktroute lohnen sich klar.",
@@ -201,6 +212,27 @@ Ausweichroute bei hoher Risikostufe – über fast den ganzen Zeithorizont stabi
     )
 
 with st.expander("📐 Mathematische Formulierung"):
+    # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/routenresilienz-erklaert.json, nicht von Hand ändern)
+    st.markdown(
+        r"""
+**Lesehilfe.** Gegeben sind die Risikostufe zu Beginn, die Wahrscheinlichkeiten, mit der sie steigt oder sinkt, die Kosten von Direktroute, Ausweichroute und Abwarten sowie die Zahl der Perioden. Gesucht ist für jede Periode und Risikostufe die Entscheidung (direkt, ausweichen oder warten), die die erwarteten Gesamtkosten minimiert.
+
+| Symbol | Bedeutung |
+|---|---|
+| $n$, $N$ | Periode, letzte Periode (dort muss entschieden werden) |
+| $k$, $K$ | Risikostufe, Zahl der Risikostufen |
+| $p_{up}$, $p_{down}$ | Wahrscheinlichkeit der Eskalation und der Deeskalation |
+| $T(k, k')$ | Übergangswahrscheinlichkeit von Stufe $k$ zu Stufe $k'$ |
+| $c_{Ausweichen}$ | Kosten der Ausweichroute (fest und sicher) |
+| $c_{Warten}$ | Kosten je Periode Abwarten (verlorene Charterzeit) |
+| $\mathbb{E}[\text{Kosten Direktroute} \mid k]$ | erwartete Kosten der Direktroute in Stufe $k$ |
+| $V(n, k)$ | minimale erwartete Kosten ab Periode $n$ in Stufe $k$ |
+| $\pi(n, k)$ | optimale Entscheidung: direkt, ausweichen oder warten |
+
+[Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/routenresilienz-erklaert.html#fachleute)
+        """
+    )
+    # erklaerseite:lesehilfe:end
     st.markdown(
         r"""
 **Zustandsraum.** Periode $n \in \{0, \dots, N\}$, Risikostufe $k \in \{0, \dots, K-1\}$; Übergang per Random Walk mit reflektierenden Rändern (Eskalationswahrscheinlichkeit $p_{up}$,
